@@ -1,0 +1,157 @@
+/* Add some style to the page */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #1d1f21;
+  color: #c5c8c6;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #f0c674;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Add some animation to the page */
+.gif-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.gif-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add some style to the social icons */
+.social-icons {
+  display: flex;
+  margin-top: 50px;
+}
+
+.social-icon {
+  font-size: 30px;
+  margin-right: 20px;
+}
+
+/* Add some style to the skills section */
+.skills {
+  margin-top: 50px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.skill-name {
+  flex: 1;
+}
+
+.skill-bar {
+  height: 10px;
+  background-color: #f0c674;
+  margin-left: 10px;
+  flex: 3;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background-color: #c5c8c6;
+}
+
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.profile-image {
+  flex: 1;
+  margin-right: 30px;
+  text-align: center;
+}
+
+.profile-image img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-details {
+  flex: 2;
+}
+
+.profile-details h2 {
+  margin-top: 0;
+}
+
+.profile-details p {
+  font-size: 20px;
+}
+
+/* Add media query for small screens */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+  }
+
+  .profile-image {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
