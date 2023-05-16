@@ -21,3 +21,18 @@
   width: 80%;
   height: auto;
 }
+
+/* Responsive design for mobile */
+@media screen and (max-width: 768px) {  /* adjust as needed for your design */
+  .main-content {
+    flex-direction: column;
+  }
+
+  .profile, .courses, .about {
+    width: 100%;
+  }
+
+  .profile-image {
+    width: 60%;
+  }
+}
