@@ -18,8 +18,9 @@
 }
 
 .profile-image {
-  width: 80%;
+  width: 60%;
   height: auto;
+   border-radius: 50%; /* Makes the image circular */
 }
 
 /* Responsive design for mobile */
@@ -29,10 +30,10 @@
   }
 
   .profile, .courses, .about {
-    width: 100%;
+    width: 80%;
   }
 
   .profile-image {
-    width: 60%;
+    width: 50%;
   }
 }
