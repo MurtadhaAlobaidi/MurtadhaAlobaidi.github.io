@@ -12,9 +12,14 @@ $message = strip_tags(htmlspecialchars($_POST['message']));
 $to = "alobaidi.murtadha@gmail.com"; //
 $subject = "$m_subject:  $name";
 $body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\n\nEmail: $email\n\nSubject: $m_subject\n\nMessage: $message";
-$header = "From: $email";
-$header .= "Reply-To: $email";	
 
-if(!mail($to, $subject, $body, $header))
+// Additional headers
+$headers = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+$headers .= 'From: '.$name.' <'.$email.'>' . "\r\n" .
+    'Reply-To: '.$email. "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+if(!mail($to, $subject, $body, $headers))
   http_response_code(500);
 ?>
