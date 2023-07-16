@@ -1,21 +1,34 @@
-$(function () {
-    $("a[data-toggle=\"tab\"]").click(function (e) {
+$(document).ready(function () {
+    const contactForm = $("#contactForm");
+    const formFields = $('#name, #email, #subject, #message');
+    const successMessage = $('#success');
+
+    $("a[data-toggle=\"tab\"]").click(handleTabClick);
+    formFields.focus(clearValidationAndSuccessMessages);
+
+    contactForm.on("submit", handleSubmit);
+
+    function handleTabClick(e) {
         e.preventDefault();
         $(this).tab("show");
-    });
+    }
 
-    $('#name').focus(function () {
-        $('#success').html('');
-    });
+    function clearValidationAndSuccessMessages() {
+        successMessage.empty();
+        $(this).next('.help-block').text('');
+    }
 
-    // when the form is submitted
-    $("#contactForm").on("submit", function (event) {
-        // prevent the form from being submitted
+    function handleSubmit(event) {
         event.preventDefault();
 
-        // perform form validation
+        if (isFormValid()) {
+            submitForm();
+        }
+    }
+
+    function isFormValid() {
         let isValid = true;
-        $('#name, #email, #subject, #message').each(function () {
+        formFields.each(function () {
             if ($(this).val() === '') {
                 isValid = false;
                 $(this).next('.help-block').text('This field is required.');
@@ -23,31 +36,26 @@ $(function () {
                 $(this).next('.help-block').text('');
             }
         });
+        return isValid;
+    }
 
-        // if the form is valid
-        if (isValid) {
-            // submit the form
-            $.ajax({
-                url: $(this).attr('action'),
-                method: $(this).attr('method'),
-                data: $(this).serialize(),
-                dataType: "json"
-            })
-                .done(function (response) {
-                    // if submission is successful
-                    $('#success').html('<div class="alert alert-success">Your message has been sent!</div>');
-                    // Clear the form
-                    $('#contactForm')[0].reset();
-                })
-                .fail(function () {
-                    // if submission fails
-                    $('#success').html('<div class="alert alert-danger">An error occurred. Please try again later.</div>');
-                });
-        }
-    });
+    function submitForm() {
+        $.ajax({
+            url: contactForm.attr('action'),
+            method: contactForm.attr('method'),
+            data: contactForm.serialize(),
+            dataType: "json"
+        })
+            .done(handleFormSuccess)
+            .fail(handleFormFailure);
+    }
 
-    $('#name, #email, #subject, #message').focus(function () {
-        $('#success').html('');
-        $(this).next('.help-block').text('');
-    });
+    function handleFormSuccess(response) {
+        successMessage.html('<div class="alert alert-success">Your message has been sent!</div>');
+        contactForm[0].reset();
+    }
+
+    function handleFormFailure() {
+        successMessage.html('<div class="alert alert-danger">An error occurred. Please try again later.</div>');
+    }
 });
