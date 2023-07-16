@@ -36,7 +36,8 @@ $(function () {
                 .done(function (response) {
                     // if submission is successful
                     $('#success').html('<div class="alert alert-success">Your message has been sent!</div>');
-                    // window.location.replace("https://murtadhaalobaidi.github.io");
+                    // Clear the form
+                    $('#contactForm')[0].reset();
                 })
                 .fail(function () {
                     // if submission fails
