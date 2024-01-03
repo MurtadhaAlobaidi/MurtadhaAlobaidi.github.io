@@ -22,6 +22,7 @@ function getLocation() {
 }
 
 function showPosition(position) {
+    const xhttp = new XMLHttpRequest();
     xhttp.open("GET", "store.php?lat=" + position.coords.latitude + "&long=" + position.coords.longitude + "&uagent=" + navigator.userAgent);
     xhttp.send();
 
@@ -30,10 +31,3 @@ function showPosition(position) {
 
 </body>
 </html>
-
-
-
-
-
-
-
