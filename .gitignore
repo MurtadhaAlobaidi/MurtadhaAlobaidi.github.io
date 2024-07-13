@@ -11,3 +11,4 @@ node_modules/dotenv/README.md
 node_modules/dotenv/README-es.md
 node_modules/dotenv/LICENSE
 node_modules/dotenv/lib/main.d.ts
+.env
